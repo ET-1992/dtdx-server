@@ -167,8 +167,10 @@ async function updateCategory() {
     const categoryRootPath = path.join(__dirname, '../public/biaoqing/category');
     const categorys = await Category.findAll();
     categorys.forEach((item) => {
-        item.url = 'www.pengfeidie.com/biaoqing/category' + item.id + '.gif';
-        item.save();
+        if (item.url) {
+            item.url = 'www.pengfeidie.com/biaoqing/category' + item.id + '.gif';
+            item.save();
+        }
     });
 }
 
