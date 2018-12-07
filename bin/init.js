@@ -167,10 +167,8 @@ async function updateCategory() {
     const categoryRootPath = path.join(__dirname, '../public/biaoqing/category');
     const categorys = await Category.findAll();
     categorys.forEach((item) => {
-        let urlPath = path.join(categoryRootPath, `./${item.id}.gif`);
-        const index = urlPath.indexOf('biaoqing');
-        urlPath = urlPath.substring(index);
-        item.url = urlPath;
+        item.url = item.url.replace(/\\/g, '/');
+        item.url = 'www.pengfeidie.com/' + item.url;
         item.save();
     });
 }
