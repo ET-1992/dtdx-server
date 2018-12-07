@@ -168,7 +168,7 @@ async function updateCategory() {
     const categorys = await Category.findAll();
     categorys.forEach((item) => {
         if (item.url) {
-            item.url = 'www.pengfeidie.com/biaoqing/category' + item.id + '.gif';
+            item.url = 'www.pengfeidie.com/biaoqing/category/' + item.id + '.gif';
             item.save();
         }
     });
