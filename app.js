@@ -5,6 +5,7 @@ const logger = require('koa-logger');
 const err = require('koa-onerror');
 const path = require('path');
 const index = require('./routes/index');
+const staticCache = require('koa-static-cache');
 
 const app = new Koa();
 
@@ -18,7 +19,7 @@ app.use(json());
 
 app.use(logger());
 
-app.use(require('koa-static')(path.join(__dirname, '/public')));
+app.use(staticCache(path.join(__dirname, '/public')));
 
 app.use(async (ctx, next) => {
     const start = new Date();
